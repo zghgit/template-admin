@@ -5,6 +5,7 @@
 @import './common/common.less';
 @import './common/keyframes.less';
 @import './common/transition.less';
+@import './common/override.less';
 
 // ------------------------------------初始化全局样式-----------------------------------------
 
@@ -22,5 +23,18 @@ body {
         overflow: hidden;
     }
 }
+#app {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+}
 
+a {
+    text-decoration: underline;
+    color: #00dcff;
+    &:hover {
+        color: #33f3e1;
+    }
+}
 // ------------------------------------框架-----------------------------------------

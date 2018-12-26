@@ -9,9 +9,18 @@ module.exports = {
         'max-nesting-depth': 3, // 最大嵌套深度
         'max-empty-lines': 1,
         'string-quotes': 'single', // 单引号
+        "selector-pseudo-class-no-unknown": [
+            true,
+            {
+                "ignorePseudoClasses": [
+                    "global"
+                ]
+            }
+        ],
         'function-url-quotes': 'always', // 单引号
         'at-rule-semicolon-newline-after': null,
-        'property-no-unknown': [ true, {'ignoreProperties': ['return']} ], // 自定义函数用，忽略return
-        'selector-list-comma-newline-after': 'never-multi-line' // 不允许多行
+        'property-no-unknown': [true, { 'ignoreProperties': ['return'] }], // 自定义函数用，忽略return
+        'selector-list-comma-newline-after': 'never-multi-line', // 不允许多行
+        'rule-empty-line-before': null
     }
 };

@@ -1,99 +1,137 @@
 <template>
-    <el-container :class="$style.container">
-        <el-aside :class="$style.aside" :width="width">
-            <h1 :class="$style.logo"><span>管理系统logo</span></h1>
-            <aside-menu class="aside-menu" :data="menuData" :collapse="collapse" background-color="#1f2d3d" text-color="#fff" />
-        </el-aside>
-        <el-container>
-            <el-header :class="$style.header">
-                <i :class="[$style.switch, 'fas fa-bars fa-lg']" @click="toggle"></i>
-            </el-header>
-            <el-main :class="$style.main">
-            </el-main>
+    <div :class="$style.container">
+        <head-top></head-top>
+        <el-container :class="$style.containers">
+            <el-aside :class="$style.aside" :style="{'width': width}">
+                <aside-menu
+                    class="aside-menu"
+                    :data="menuData"
+                    :collapse="collapse"
+                    background-color="#1f2d3d"
+                    text-color="#fff"
+                    @toggleMode="toggleMode"
+                />
+            </el-aside>
+            <div
+                :class="[$style.bread_css]"
+                :style="{'left': width, 'width': `calc(100% - ${width})`}"
+            >
+                <s-breadbreadcrumb :breadcrumbList="menuData"></s-breadbreadcrumb>
+            </div>
+            <div
+                :class="[$style.maicontainersn]"
+                :style=" {'width': `calc(100% - ${width})`}"
+                id="main-container"
+            >
+                <el-main>
+                    <router-view/>
+                    <!-- <bottom-operate-button></bottom-operate-button> -->
+                </el-main>
+            </div>
         </el-container>
-    </el-container>
+    </div>
 </template>
 
 <script>
 import AsideMenu from '@/components/index/home/menu';
+// import BottomOperateButton from '@/components/index/home/BottomOperateButton';
 import menu from '@/helper/menu';
+import SBreadbreadcrumb from '@/components/index/home/SBreadbreadcrumb';
 
 export default {
-    components: {AsideMenu},
+    components: {
+        AsideMenu,
+        SBreadbreadcrumb,
+        // BottomOperateButton,
+        HeadTop: () => import('@/components/index/home/headTop.vue')
+    },
     data() {
         return {
-            width: 'auto',
+            width: '200px',
             collapse: false,
             menuData: menu.filter(this.$router.options.routes)
         };
     },
     methods: {
-        toggle() {
-            const swit = this.$jquery(`.${this.$style.switch}`);
-            const target = this.$jquery(`.${this.$style.logo} span`);
-            if (this.collapse) {
-                setTimeout(() => target.show(), 100);
-                swit.removeClass(this.$style['switch-tran']);
-            } else {
-                target.hide();
-                swit.addClass(this.$style['switch-tran']);
-            }
+        toggleMode() {
+            // const swit = this.$jquery(`.${this.$style.switch}`);
+            // const target = this.$jquery(`.${this.$style.logo} span`);
+            // if (this.collapse) {
+            //     setTimeout(() => target.show(), 100);
+            //     swit.removeClass(this.$style['switch-tran']);
+            // } else {
+            //     target.hide();
+            //     swit.addClass(this.$style['switch-tran']);
+            // }
             this.collapse = !this.collapse;
+            if (this.collapse) {
+                this.width = '64px';
+            } else {
+                this.width = '200px';
+            }
         }
-    }
+    },
+    mounted() {}
 };
 </script>
 
 <style>
-.aside-menu:not(.el-menu--collapse) {
-    width: 250px;
-}
+    .aside-menu:not(.el-menu--collapse) {
+        width: 100%;
+        border-right: solid 0;
+    }
 </style>
 
 <style lang="less" module>
-@import '../../../assets/style/config.less';
+    @import '../../../assets/style/config.less';
 
-@height: 60px;
+    @height: 60px;
+    @width: 200px;
 
-.logo {
-    height: @height;
-    line-height: @height;
-    margin: 0;
-    color: #fff;
-    text-align: center;
-    font-size: 20px;
-}
-
-.container {
-    height: 100vh;
-}
-
-.aside {
-    width: 200px;
-    background-color: @g-color-primary;
-
-    > ul {
-        border-right: 0;
+    .container {
+        width: 100%;
+        height: 100vh;
+        background: url('../../../assets/img/common/bj.jpg') no-repeat;
+        background-size: cover;
     }
-}
 
-.header {
-    height: @height;
-    line-height: @height;
-    border-bottom: 1px solid @g-color-border4;
-}
+    .containers {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+    }
 
-.switch {
-    cursor: pointer;
-    transition: all 0.2s;
-}
+    .aside {
+        background-color: rgba(0, 11, 32, 0.4);
+        height: 1080px;
+    }
 
-.switch-tran {
-    transform: rotate(90deg);
-    transition: all 0.2s;
-}
+    .bread_css {
+        position: absolute;
+        top: 0;
+    }
 
-.main {
-    background-color: #f0f2f5;
-}
+    .maicontainersn {
+        color: #fff;
+        overflow: auto;
+        margin-bottom: 50px;
+        margin-top: 45px;
+        width: calc(100% - @width);
+    }
+
+    .switch {
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .switch-tran {
+        transform: rotate(90deg);
+        transition: all 0.2s;
+    }
+
+    .main {
+        background-color: hsl(219, 77%, 18%);
+    }
 </style>

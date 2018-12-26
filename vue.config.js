@@ -10,13 +10,15 @@ module.exports = {
 
     devServer: {
         host: '0.0.0.0',
-        port: 8080,
+        port: 8086,
         proxy: null,
         before(app) {
             mock(app);
         }
     },
     // 当使用 pages 选项构建多页面应用时。
+
+    // todo 自动根据文件名处理多页，而不用单独一个个去写
     pages: {
         index: {
             // page 的入口
@@ -53,7 +55,9 @@ module.exports = {
         externals: {
             jquery: 'jQuery',
             echarts: 'echarts',
-            moment: 'moment'
+            moment: 'moment',
+            underscore: '_',
+            axios: 'axios'
         },
         // 附加插件列表
         plugins: [
@@ -68,7 +72,7 @@ module.exports = {
 
     css: {
         // 是否使用css分离插件 ExtractTextPlugin
-        extract: true,
+        extract: process.env.NODE_ENV === 'production',
         // 开启 CSS source maps?
         sourceMap: false,
         // css预设器配置项
@@ -77,7 +81,7 @@ module.exports = {
                 plugins: [new LessPluginFun()]
             },
         },
-        //     // 启用 CSS modules for all css / pre-processor files.
-        //     modules: false
+        // 启用 CSS modules for all css / pre-processor files.
+        modules: false
     }
 };
