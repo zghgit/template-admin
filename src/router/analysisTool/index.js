@@ -30,10 +30,18 @@ const AnalysisToolIndex = {
                     meta: 'scroll',
                     path: '/knowledge',
                     name: 'knowledge',
-                    label: '基础知识信息',
+                    label: '基础知识',
                     icon: 'menu-fix-icon fa fa-location-arrow',
                     component: resolve => require(['@/pages/index/views/analysisTool/Knowledge/Index.vue'], resolve)
                 },
+                {
+                    mate: 'scroll',
+                    path: '/EchartsOpong',
+                    name: '/EchartsOpong',
+                    label: 'Echarts基础',
+                    icon: 'menu-fix-icon fa fa-location-arrow',
+                    component: resolve => require(['@/pages/index/views/analysisTool/EchartsOpong/Index'], resolve)
+                }
             ]
         }
     ]

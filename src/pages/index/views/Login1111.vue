@@ -1,25 +1,14 @@
 <template>
     <div class="login-page">
-        <div class="banner" style="position:fixed; top: 0; left:0; z-index:111; background: rgba(2, 49, 88, 0.6); padding: 10px 0;">
+        <div class="banner"
+             style="position:fixed; top: 0; left:0; z-index:111; background: rgba(2, 49, 88, 0.6); padding: 10px 0;">
             <div class="main-width">
                 <div class="logo">
                     <img src="../../../assets/img/usr/login/logo.png" alt="">
                 </div>
-                <div class="login-btn" @click="handleLogin" v-if="!loginFlag">
+                <div class="login-btn" @click="handleLogin">
                     <el-button type="primary">登录</el-button>
                     <!-- <img src="../../../assets/img/usr/login/login.png" alt=""><span>登录</span> -->
-
-                </div>
-                <div class="top_container" v-else>
-                    <el-tooltip class="item" effect="dark" placement="bottom">
-                        <div class="user_img"><i class="fa fa-user"></i></div>
-                        <div slot="content">{{ ruleForm.userName }}</div>
-                    </el-tooltip>
-                    <div class="user_name">欢迎您登陆！{{ ruleForm.userName }}</div>
-                    <el-tooltip class="item" effect="dark" placement="bottom">
-                        <div class="login_out" @click="handleLoginOut"><i class="fa fa-sign-out-alt"></i></div>
-                        <div slot="content">登出</div>
-                    </el-tooltip>
                 </div>
             </div>
         </div>
@@ -30,16 +19,19 @@
                     <h5>数字上期 智慧期市</h5>
                     <el-button size="small" @click="handleDetail">了解详情</el-button>
                     <div class="login-area" v-if="showLoginDialog">
-                        <el-form ref="ruleForm" :model="ruleForm" label-width="70px" @keyup.enter.native="handleConfirm('loginFormId')">
+                        <el-form ref="ruleForm" :model="ruleForm" label-width="70px"
+                                 @keyup.enter.native="handleConfirm('loginFormId')">
                             <el-form-item prop="userName" label="用户名:" :rules="[{
                                 required: true, message: '请输入用户名'
                             }]">
-                                <el-input class="custom-width" size="small" v-model="ruleForm.userName" clearable></el-input>
+                                <el-input class="custom-width" size="small" v-model="ruleForm.userName"
+                                          clearable></el-input>
                             </el-form-item>
                             <el-form-item prop="password" label="密码:" :rules="[{
                                 required: true, message: '请输入密码'
                             }]">
-                                <el-input class="custom-width" size="small" v-model="ruleForm.password" clearable type="password"></el-input>
+                                <el-input class="custom-width" size="small" v-model="ruleForm.password" clearable
+                                          type="password"></el-input>
                             </el-form-item>
                         </el-form>
                         <div style="text-align:center;">
@@ -49,7 +41,7 @@
                 </div>
                 <div class="bottom-content">
                     <div class="div1">研究支撑平台</div>
-                    <div class="div2" @click="cardClick">监管科技工具集</div>
+                    <div class="div2">监管科技工具集</div>
                     <div class="div3">国际化应用</div>
                     <div class="div4">行业应用</div>
                 </div>
@@ -78,18 +70,18 @@
     </div>
 </template>
 <script>
-// import {saveAuthedInfos, saveRealName} from '@/utils/storageUtil';
-import {getAccessToken} from '@/api/login';
+// import {saveAuthedInfos, saveRealName} from '@/utils/storageUtil'
+// import {loginApi} from '@/api/modules/dataAnsis';
+
 export default {
     data() {
         return {
-            loginFlag: false,
             showLoginDialog: false,
             fullScreenLoading: false,
             ruleForm: {
                 userName: '',
-                password: ''
-            }
+                password: '',
+            },
         };
     },
     methods: {
@@ -100,54 +92,60 @@ export default {
             this.showLoginDialog = false;
         },
         handleLogin() {
-            if (this.loginFlag === true) {
-                this.showLoginDialog = false;
-                this.$message.error('您已登陆!');
-            } else {
-                this.showLoginDialog = true;
-            }
+            this.showLoginDialog = !this.showLoginDialog;
         },
         handleCancle() {
             this.handleCloseDialog();
         },
+        // handleConfirm() {
+        //     this.$refs.ruleForm.validate(valid => {
+        //         if (valid) {
+        //             // 请求token
+        //             this.getLogin();
+        //         }
+        //     });
+        // },
         handleConfirm() {
             this.$refs.ruleForm.validate(valid => {
                 if (valid) {
                     // 请求token
-                    this.getLogin();
+                    // this.getLogin()
+                    this.$router.push({path: '/'});
                 }
             });
         },
+        // getLogin() {
+        //     let params = {
+        //         username: this.ruleForm.userName.toLowerCase(),
+        //         password: this.ruleForm.password
+        //     };
+        //     this.fullScreenLoading = true;
+        //     getAccessToken(params).then(resp => {
+        //         localStorage.setItem('ACCESS_TOKEN', resp.access_token);
+        //         localStorage.setItem('USER_NAME', params.username);
+        //         this.$store.commit('saveAccessToken', resp.access_token);
+        //         this.$router.push({path: '/sceneConfig'});
+        //     });
+        // },
         getLogin() {
-            this.mainContent = true;
             let params = {
                 username: this.ruleForm.userName.toLowerCase(),
-                password: this.ruleForm.password
+                password: this.ruleForm.password,
             };
+            console.log(params);
             this.fullScreenLoading = true;
-            getAccessToken(params).then(resp => {
-                localStorage.setItem('ACCESS_TOKEN', resp.access_token);
-                localStorage.setItem('USER_NAME', params.username);
-                this.$store.commit('saveAccessToken', resp.access_token);
-                // this.$router.push({path: '/sceneConfig'});
-                this.loginFlag = true;
-                this.showLoginDialog = false;
-            });
+            // loginApi(params).then((resp) => {
+            //     this.fullScreenLoading = false;
+            //     console.log(resp);
+            //     // saveAuthedInfos(resp, params.username)
+            //     // saveRealName(res)
+            //     let redirect = decodeURIComponent(this.$router.currentRoute.query.redirect || '/');
+            //     this.$router.push({path: redirect});
+            // }, () => {
+            //     this.fullScreenLoading = false;
+            // });
         },
-        cardClick() {
-            if (this.loginFlag === true) {
-                this.$router.push({name: 'toolsHome'});
-            } else {
-                this.$message.error('您还未登录!');
-            }
-        },
-        handleLoginOut() {
-            this.loginFlag = false;
-            localStorage.removeItem('ACCESS_TOKEN');
-            localStorage.removeItem('USER_NAME');
-            this.$message.success('登出成功');
-        }
-    }
+    },
 };
 </script>
 
@@ -157,41 +155,6 @@ export default {
         height: 100%;
         color: #fff;
         position: relative;
-        .top_container {
-            height: 60px;
-            display: flex;
-            line-height: 60px;
-            justify-content: flex-end;
-            align-items: center;
-            color: #00cfff;
-            .user_img {
-                border-radius: 50%;
-                width: 45px;
-                height: 45px;
-                background: rgba(255, 255, 255, 0.5);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                cursor: pointer;
-                i {
-                    font-size: 16px;
-                }
-            }
-            .user_name {
-                margin-left: 5px;
-            }
-            .login_out {
-                margin-left: 25px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                i {
-                    font-size: 24px;
-                }
-            }
-        }
         .main-width {
             max-width: 1280px;
             margin: 0 auto;

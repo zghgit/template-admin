@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import {Notification} from 'element-ui';
 import AlarmMonitorIndex from './alarmMonitor/index';
 import AnalysisToolIndex from './analysisTool/index';
 
@@ -77,4 +78,27 @@ router.beforeEach((to, from, next) => {
     next();
 });
 
+router.beforeEach((to, from, next) => {
+    if (to.name === 'login') {
+        next();
+    } else {
+        document.title = to.meta.title || '上期所大数据监管科技平台';
+        // 权限校验等
+        let accessToken = localStorage.getItem('ACCESS_TOKEN');
+        if (!accessToken) {
+            Notification.error('您的登陆已过期，请重新登录!');
+            localStorage.removeItem('ACCESS_TOKEN');
+            localStorage.removeItem('USER_NAME');
+            next({
+                path: '/login',
+                query: {redirect: to.fullPath} // 将跳转的路由path作为参数，登录成功后跳转到该路由
+            });
+        } else {
+            next();
+        }
+    }
+});
+router.afterEach((to, from, next) => {
+    Vue.prototype.$jquery('#main-container').scrollTop(0);
+});
 export default router;
