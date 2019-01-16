@@ -90,14 +90,14 @@ export default {
 
     .container {
         width: 100%;
-        height: 100vh;
+        height: 100%;
         background: url('../../../assets/img/common/bj.jpg') no-repeat;
         background-size: cover;
     }
 
     .containers {
         width: 100%;
-        height: 100%;
+        height: calc(100% - 60px);
         padding: 0;
         margin: 0;
         position: absolute;
@@ -105,7 +105,7 @@ export default {
 
     .aside {
         background-color: rgba(0, 11, 32, 0.4);
-        height: 1080px;
+        height: 100%;
     }
 
     .bread_css {
@@ -116,7 +116,6 @@ export default {
     .maicontainersn {
         color: #fff;
         overflow: auto;
-        margin-bottom: 50px;
         margin-top: 45px;
         width: calc(100% - @width);
     }

@@ -57,6 +57,9 @@
             <br/>git init      在当前目录新建一个Git代码库  新建一个目录，将其初始化为Git代码库
 
             <br/>git log   查看提交的版本
+            <br/>npm run upload   打包项目上传到公司服务器 （96或95）
+            <br/>git tag -a v0.3 -m 'version v0.3 20181228'   提交打tag的版本号
+            <br/>git tag   查看提交打tag的版本号
         </div>
         <p>
             快捷键格式化 shift + allt+f

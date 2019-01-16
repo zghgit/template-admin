@@ -2,52 +2,52 @@
 import Home from '@/pages/index/views/Home.vue';
 // 下面两个路径任选一个，怎么好理解，就怎么引入文件路径
 // import AlarmMonitor from '@/pages/index/views/alarmMonitor/Index.vue';
-import AlarmMonitor from '@/router/alarmMonitor/Index.vue';
+import BusinessAudit from '@/router/businessAudit/Index.vue';
 
 // 一个空模板，方便子节点使用
 // const Root = Vue.component('root', {
 //     template: '<router-view></router-view>'
 // });
 
-const Index = {
+const BusinessAuditIndex = {
     path: '',
-    name: 'tools',
-    label: '监管科技工具集',
+    name: 'tools4',
+    label: 'VUE',
     component: Home,
     icon: 'menu-fix-icon fa fa-toolbox',
     children: [
         {
             path: '',
-            name: 'alarmMonitor',
-            label: '关联账户分析',
+            name: 'businessAudit',
+            label: 'VUE-修饰符',
             icon: 'menu-fix-icon fa fa-address-book',
-            component: AlarmMonitor,
+            component: BusinessAudit,
             children: [
                 {
                     meta: 'scrollTop',
                     path: '/',
                     hidden: true,
-                    name: 'sceneConfig',
-                    label: '分析向导',
+                    name: 'typeSpecifier',
+                    label: '事件-修饰符',
                     icon: 'menu-fix-icon fa fa-location-arrow',
-                    component: resolve => require(['@/pages/index/views/alarmMonitor/sceneConfig/Index.vue'], resolve)
+                    component: resolve => require(['@/pages/index/views/businessAudit/typeSpecifier/Index.vue'], resolve)
                 },
                 {
                     meta: 'scrollTop',
-                    path: '/sceneConfig',
-                    name: 'sceneConfig',
-                    label: '分析向导',
+                    path: '/typeSpecifier',
+                    name: 'typeSpecifier',
+                    label: 'VUE-事件-修饰符',
                     icon: 'menu-fix-icon fa fa-location-arrow',
-                    component: resolve => require(['@/pages/index/views/alarmMonitor/sceneConfig/Index.vue'], resolve)
+                    component: resolve => require(['@/pages/index/views/businessAudit/typeSpecifier/Index.vue'], resolve)
                 },
-                {
-                    meta: 'scrollTop',
-                    path: 'sceneConfiguration',
-                    name: 'sceneConfiguration',
-                    label: '关联账户组合并',
-                    icon: 'menu-fix-icon fa fa-venus-double',
-                    component: resolve => require(['@/pages/index/views/alarmMonitor/sceneConfiguration/Index.vue'], resolve)
-                },
+                // {
+                //     meta: 'scrollTop',
+                //     path: 'sceneConfiguration',
+                //     name: 'sceneConfiguration',
+                //     label: '关联账户组合并',
+                //     icon: 'menu-fix-icon fa fa-venus-double',
+                //     component: resolve => require(['@/pages/index/views/businessAudit/typeSpecifier/Index.vue'], resolve)
+                // },
                 // {
                 //     meta: 'scrollTop',
                 //     path: 'sceneConfiguration',
@@ -83,4 +83,4 @@ const Index = {
         }
     ]
 };
-export default Index;
+export default BusinessAuditIndex;

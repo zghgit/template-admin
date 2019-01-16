@@ -3,13 +3,13 @@
         <h1>基础知识</h1>
         <el-tabs v-model="activeName" size="small" type="card">
             <el-tab-pane v-for="active in activePane" :label="active.label" :key="active.name" :name="active.name">
-                <hre-fList v-show="activeName === '0'"></hre-fList>
-                <git-set v-show="activeName === '1'"></git-set>
-                <css-remark v-show="activeName === '2'"></css-remark>
-                <vue-remark v-show="activeName === '3'"></vue-remark>
-                <es6-remark v-show="activeName === '4'"></es6-remark>
             </el-tab-pane>
         </el-tabs>
+        <hre-fList v-show="activeName === '0'"></hre-fList>
+        <git-set v-show="activeName === '1'"></git-set>
+        <css-remark v-show="activeName === '2'"></css-remark>
+        <vue-remark v-show="activeName === '3'"></vue-remark>
+        <es6-remark v-show="activeName === '4'"></es6-remark>
     </div>
 </template>
 
@@ -46,7 +46,7 @@ export default {
                     label: 'Es6基础'
                 }
             ],
-            activeName: 0
+            activeName: '4'
         };
     },
     computed: {},

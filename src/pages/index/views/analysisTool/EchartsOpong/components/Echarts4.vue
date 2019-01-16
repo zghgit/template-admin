@@ -1,32 +1,27 @@
 <template>
-    <div>
-        <el-card :class="$style.card">
-            <el-button type="primary" @click="butChildClick1">tab2 子级获取图标数据</el-button>
-            <br/>this.$refs['echartsDemo'].initChart();
-            <echarts-common
-                :loading="loading2"
-                ref="echartsDemo"
-                domId="echartsId2"
-                :defaultOption="chartOptions2"
-                :propsChartHeight="430">
-            </echarts-common>
-        </el-card>
+    <div :clas="$style.echarts4">
+        <el-button type="text" @click="butClicks4">click</el-button>
+        <echarts-common
+            :loading="loading4"
+            ref="echartsDemo4"
+            domId="echartsId4"
+            :defaultOption="chartOptions4"
+            :propsChartHeight="430">
+        </echarts-common>
     </div>
 </template>
 
 <script>
 import {echartsData2} from './constants';
 import EchartsCommon from '@/components/index/common/EchartsCommon';
+
 export default {
-    name: 'Echarts2',
+    name: 'Echarts4',
     components: {EchartsCommon},
-    props: {
-        loading2: {
-            type: Boolean
-        }
-    },
+    props: {},
     data() {
         return {
+            loading4: false,
             markLingOping: {
                 markLine: {
                     itemStyle: {
@@ -53,7 +48,7 @@ export default {
                     ]
                 }
             },
-            chartOptions2: {
+            chartOptions4: {
                 backgroundColor: ['rgba(7, 39, 89)'],
                 color: [
                     '#00709e',
@@ -94,8 +89,9 @@ export default {
                     containLabel: true
                 },
                 yAxis: {
+                    show: true,
                     type: 'value',
-                    name: '持仓量2', // 持仓量
+                    name: '持仓量4', // 持仓量
                     splitLine: {
                         lineStyle: {
                             color: ['rgb(20, 53, 98)'] // 网格线颜色
@@ -118,6 +114,7 @@ export default {
                     }
                 },
                 xAxis: {
+                    show: true,
                     name: '日期',
                     type: 'category',
                     data: [],
@@ -174,7 +171,7 @@ export default {
     mounted() {
     },
     methods: {
-        butChildClick1() {
+        butClicks4() {
             this.barEchartsDete();
         },
         barEchartsDete() {
@@ -186,10 +183,10 @@ export default {
                 // set datazoom
                 let dataZoomStartValue = val.dateList.length > 20 ? val.dateList[val.dateList.length - 20] : 0;
                 let dataZoomEndValue = val.dateList[val.dateList.length - 1];
-                this.chartOptions2['dataZoom'][0]['startValue'] = dataZoomStartValue;
-                this.chartOptions2['dataZoom'][1]['startValue'] = dataZoomStartValue;
-                this.chartOptions2['dataZoom'][0]['endValue'] = dataZoomEndValue;
-                this.chartOptions2['dataZoom'][1]['endValue'] = dataZoomEndValue;
+                this.chartOptions4['dataZoom'][0]['startValue'] = dataZoomStartValue;
+                this.chartOptions4['dataZoom'][1]['startValue'] = dataZoomStartValue;
+                this.chartOptions4['dataZoom'][0]['endValue'] = dataZoomEndValue;
+                this.chartOptions4['dataZoom'][1]['endValue'] = dataZoomEndValue;
                 let basicOptions = {
                     type: 'bar',
                     barMaxWidth: '45',
@@ -211,8 +208,8 @@ export default {
                         ...basicOptions,
                     });
                 });
-                this.chartOptions2.series = temp;
-                this.chartOptions2.xAxis.data = val ? val.dateList : [];
+                this.chartOptions4.series = temp;
+                this.chartOptions4.xAxis.data = val ? val.dateList : [];
                 // this.$refs['echartsDemo'].initChart();
             }
         }
@@ -221,4 +218,5 @@ export default {
 </script>
 
 <style lang="less" module>
+
 </style>

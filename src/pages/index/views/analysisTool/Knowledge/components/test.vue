@@ -60,6 +60,15 @@
                 vue中axios处理http发送请求的示例（Post和get）
             </a>
         </h3>
+        <h3>
+            <a href="https://mp.weixin.qq.com/s?__biz=MzAwNDcyNjI3OA==&mid=2650842249&idx=1&sn=0c1bfdd6a94fdf8a14b411529be6d2a6&chksm=80d38fe0b7a406f6aa2ce21e0e7cc6a1ff350a2f9e170ca5d173758a5be86494125957750a0d&scene=0#rd" target="_blank">
+                从 0 到 1 再到 100：搭建、编写、构建一个前端项目
+            </a>
+        </h3><h3>
+            <a href="https://mp.weixin.qq.com/s?__biz=MzAwNDcyNjI3OA==&mid=2650842232&idx=1&sn=d4ca228b4660865664f342c2a2f87d8f&chksm=80d38f11b7a4060747942214d88e2b06c93479ba3ada625a63bd2a4cce38c219dc3a74aa67d8&scene=0#rd" target="_blank">
+                这些被同事喷的JS代码风格你写过多少？
+            </a>
+        </h3>
     </div>
 </template>
 

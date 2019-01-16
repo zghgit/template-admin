@@ -12,7 +12,7 @@ import AlarmMonitor from '@/router/alarmMonitor/Index.vue';
 
 const AlarmMonitorIndex = {
     path: '',
-    name: 'tools',
+    name: 'tools2',
     label: '预警监控',
     component: Home,
     icon: 'menu-fix-icon fa fa-toolbox',

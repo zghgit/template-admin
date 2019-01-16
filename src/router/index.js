@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import {Notification} from 'element-ui';
+import DemoAPIIndex from './demoAPI/index';
 import AlarmMonitorIndex from './alarmMonitor/index';
 import AnalysisToolIndex from './analysisTool/index';
+import BusinessAuditIndex from './businessAudit/index';
 
 Vue.use(Router);
 
@@ -49,8 +51,10 @@ const scrollBehavior = (to, from, savedPosition) => {
 const router = new Router({
     scrollBehavior,
     routes: [
+        DemoAPIIndex, // WEB-API链接
         AlarmMonitorIndex, // 预警监控
         AnalysisToolIndex, // 分析工具
+        BusinessAuditIndex,
         {
             path: '/about',
             name: 'about',

@@ -3,7 +3,7 @@ import AnalysisTool from '@/router/analysisTool/Index.vue';
 
 const AnalysisToolIndex = {
     path: '',
-    name: 'analysis',
+    name: 'tools3',
     label: '分析工具',
     component: Home,
     icon: 'menu-fix-icon fa fa-toolbox',
@@ -17,7 +17,7 @@ const AnalysisToolIndex = {
             children: [
                 {
                     // meta: {requireAuth: false}, // true 显示子菜单 false 收起子菜单
-                    meta: 'scroll',
+                    meta: 'scrollTop',
                     path: '/',
                     hidden: true,
                     name: 'knowledge',
@@ -27,7 +27,7 @@ const AnalysisToolIndex = {
                 },
                 {
                     // meta: {requireAuth: false}, // true 显示子菜单 false 收起子菜单
-                    meta: 'scroll',
+                    meta: 'scrollTop',
                     path: '/knowledge',
                     name: 'knowledge',
                     label: '基础知识',
@@ -35,7 +35,7 @@ const AnalysisToolIndex = {
                     component: resolve => require(['@/pages/index/views/analysisTool/Knowledge/Index.vue'], resolve)
                 },
                 {
-                    mate: 'scroll',
+                    mate: 'scrollTop',
                     path: '/EchartsOpong',
                     name: '/EchartsOpong',
                     label: 'Echarts基础',
