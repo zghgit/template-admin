@@ -3,9 +3,7 @@
         <p>1.hosts 文件名字 :\Windows\System32\drivers\etc\hosts</p>
         <p>2.登陆链接 appadmin ；http://172.25.61.95:17001/index.html#/login</p>
         <div>3.githup管理员权限命令“github如何更新fork的代码”
-            <p>
-                https://blog.csdn.net/j754379117/article/details/72890717?utm_source=itdadao&utm_medium=referral
-            </p>
+            <a href="https://blog.csdn.net/j754379117/article/details/72890717?utm_source=itdadao&utm_medium=referral" target="_blank">https://blog.csdn.net/j754379117/article/details/72890717?utm_source=itdadao&utm_medium=referral</a>
         </div>
         <p>
             <br/>长期存储 githup 密码：
@@ -16,7 +14,7 @@
             <br/>4.git同步个人仓库与主仓库代码
             <br/>远端项目操作
             <br/>fork一个项目到自己的githup上
-            <br/>git clone https://github.com/zghgit/axure-futures.git   从远程仓库克隆项目到本地
+            <br/>git clone <a href="https://github.com/zghgit/axure-futures.git" target="_blank">https://github.com/zghgit/axure-futures.git</a>从远程仓库克隆项目到本地
 
             <br/>本地项目操作
             <br/>git push                           本地仓库推送到自己的githup远程仓库

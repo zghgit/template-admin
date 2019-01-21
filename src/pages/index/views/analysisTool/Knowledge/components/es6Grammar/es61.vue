@@ -1,6 +1,9 @@
 <template>
     <div>
         <el-button type="danger" @click="demo1">解构</el-button>
+        <div>
+            <a href="https://www.jianshu.com/p/550280d0ff57">ES6常用语法和方法总结</a>
+        </div>
     </div>
 </template>
 

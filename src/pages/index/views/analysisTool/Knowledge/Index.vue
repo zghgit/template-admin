@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>基础知识</h1>
+        <h3>基础知识</h3>
         <el-tabs v-model="activeName" size="small" type="card">
             <el-tab-pane v-for="active in activePane" :label="active.label" :key="active.name" :name="active.name">
             </el-tab-pane>

@@ -1,5 +1,13 @@
 <template>
     <div>
+        <el-tabs v-model="activeName" size="small" type="card">
+            <el-tab-pane
+                v-for="active in activePane"
+                :label="active.label"
+                :key="active.name"
+                :name="active.name"
+            ></el-tab-pane>
+        </el-tabs>
         <sof-scene></sof-scene>
     </div>
 </template>
@@ -11,7 +19,13 @@ export default {
     components: {SofScene},
     data() {
         return {
-            dd: '2',
+            activeName: '0',
+            activePane: [
+                {
+                    name: '0',
+                    label: 'echarts'
+                }
+            ]
         };
     },
     methods: {

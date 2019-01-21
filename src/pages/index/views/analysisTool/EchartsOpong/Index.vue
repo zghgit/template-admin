@@ -26,6 +26,7 @@
         <EchartsBic2 v-if="activeName === '1'" ref="chart2" :loading1="loading2"></EchartsBic2>
         <echarts-bic3 v-if="activeName === '2'" ref="chart3" :loading1="loading3"></echarts-bic3>
         <echarts-bic4 v-if="activeName === '3'" ref="chart4"></echarts-bic4>
+        <echarts-bic5 v-if="activeName === '4'" ref="chart5"></echarts-bic5>
     </div>
 </template>
 
@@ -34,9 +35,10 @@ import EchartsBic1 from './components/Echarts1';
 import EchartsBic2 from './components/Echarts2';
 import EchartsBic3 from './components/Echarts3';
 import EchartsBic4 from './components/Echarts4';
+import EchartsBic5 from './components/Echarts5';
 export default {
     name: 'Index',
-    components: {EchartsBic1, EchartsBic2, EchartsBic3, EchartsBic4},
+    components: {EchartsBic1, EchartsBic2, EchartsBic3, EchartsBic4, EchartsBic5},
     data() {
         return {
             loading1: false,
